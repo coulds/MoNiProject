@@ -1,5 +1,6 @@
 package com.edu.fragmentlayout;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
@@ -7,12 +8,17 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private ImageView menu;
@@ -31,6 +37,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ImageView messageImage;
     private android.app.FragmentManager manager;
     private FragmentTransaction ft;
+
+
+
 
     /**
      * 在Tab布局上显示联系人图标的控件
@@ -78,15 +87,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         initview();
         fragmentManager  = getSupportFragmentManager();
-
         setTabSelection(0);
         getSupportFragmentManager();
         mdrawerLayout = (DrawerLayout) findViewById(R.id.dl_drawerlayout);
-
-
-
-
-
 
 
 
@@ -182,8 +185,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 // 当点击了消息tab时，选中第1个tab
                 setTabSelection(0);
 //                messageText.setTextColor();
-
-
 
                 break;
             case R.id.contacts_layout:
