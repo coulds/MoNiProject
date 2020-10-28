@@ -1,28 +1,19 @@
 package com.edu.fragmentlayout;
 
-import android.content.Context;
-import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    private static final String TAG ="MainActivity" ;
     private ImageView menu;
-
     private NavigationView navigationView;
     private Toolbar toolbar;
     private DrawerLayout mdrawerLayout;
@@ -39,41 +30,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private FragmentTransaction ft;
 
 
-
-
-    /**
-     * 在Tab布局上显示联系人图标的控件
-     */
     private ImageView contactsImage;
-
-    /**
-     * 在Tab布局上显示动态图标的控件
-     */
     private ImageView newsImage;
-
-    /**
-     * 在Tab布局上显示设置图标的控件
-     */
     private ImageView settingImage;
-
-    /**
-     * 在Tab布局上显示消息标题的控件
-     */
     private TextView messageText;
-
-    /**
-     * 在Tab布局上显示联系人标题的控件
-     */
     private TextView contactsText;
-
-    /**
-     * 在Tab布局上显示动态标题的控件
-     */
     private TextView newsText;
-
-    /**
-     * 在Tab布局上显示设置标题的控件
-     */
     private TextView settingText;
 
     private FragmentManager fragmentManager;
@@ -83,35 +45,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportActionBar().hide();
-
+//        getSupportActionBar().hide();
         initview();
+        inData();
         fragmentManager  = getSupportFragmentManager();
         setTabSelection(0);
         getSupportFragmentManager();
         mdrawerLayout = (DrawerLayout) findViewById(R.id.dl_drawerlayout);
 
+    }
 
-
+    private void inData() {
     }
 
 
-    private void initview() {
 
-        navigationView = (NavigationView) findViewById(R.id.nav_view);
+
+    private void initview() {
+        navigationView = (NavigationView) findViewById(R.id.nav_view);//侧边栏
 //        menu = (ImageView) findViewById(R.id.mian_menu);
         messagelayout = findViewById(R.id.message_layout);
         contactslayout = findViewById(R.id.contacts_layout);
         newlayout = findViewById(R.id.news_layout);
         setlayout = findViewById(R.id.setting_layout);
+
         messageImage = (ImageView) findViewById(R.id.message_image);
         contactsImage = (ImageView) findViewById(R.id.contacts_image);
         newsImage = (ImageView) findViewById(R.id.news_image);
         settingImage = (ImageView) findViewById(R.id.setting_image);
+
         messageText = (TextView) findViewById(R.id.message_text);
         contactsText = (TextView) findViewById(R.id.contacts_text);
         newsText = (TextView) findViewById(R.id.news_text);
         settingText = (TextView) findViewById(R.id.setting_text);
+
         messagelayout.setOnClickListener(this);
         contactslayout.setOnClickListener(this);
         newlayout.setOnClickListener(this);
@@ -129,7 +96,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (messageFragment == null){
                     messageFragment = new MessageFragment();
                     transaction.add(R.id.content,messageFragment);
+                    messageText.setTextColor(this.getResources().getColor(R.color.color_green));
+                    messageImage.setImageResource(R.drawable.coffee_color);
 
+//                    newsText.setTextColor(this.getResources().getColor(R.color.color_green));
+//                    newsImage.setImageResource(R.drawable.coffee_color);
                 }else {
                     transaction.show(messageFragment);
                 }
@@ -184,8 +155,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.message_layout:
                 // 当点击了消息tab时，选中第1个tab
                 setTabSelection(0);
-//                messageText.setTextColor();
-
                 break;
             case R.id.contacts_layout:
                 // 当点击了联系人tab时，选中第2个tab

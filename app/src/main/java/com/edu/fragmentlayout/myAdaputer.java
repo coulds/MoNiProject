@@ -1,60 +1,127 @@
 package com.edu.fragmentlayout;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Binder;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.nostra13.universalimageloader.core.ImageLoader.TAG;
 
-public class myAdaputer extends RecyclerView.Adapter<myAdaputer.MyViewHolder> {
+
+public class myAdaputer extends RecyclerView.Adapter<myAdaputer.MyViewHolder>{
     private Context context;
-//    private View itemView,inflate;
-    private List<String> list;
+    private String datattile,datapath,dataimg,datatime;
+//    private OnItemClickListener onItemClickListener;//定义一个接口
+//    private List<Bean.Datas> data = new ArrayList<>(); //食材的数据
+    private List<Bean.ResultBean> datas = new ArrayList<>();
 
-    private ArrayList<GoodsEntity> goodsEntityList;
+//    public interface OnItemClickListener {
+//        void onItemClick(View view, int position);
+//
+//    }
+//    public void setOnItemClickListener(OnItemClickListener ClickListener){
+//        this.onItemClickListener = ClickListener;
+//    }
 
-
-    public myAdaputer(Context context , ArrayList<GoodsEntity> goodsEntityList){
+    public myAdaputer(Context context , List<Bean.ResultBean> datas){
         this.context = context;
-        this.goodsEntityList = goodsEntityList;
+        this.datas = datas;
     }
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
-//        inflate = LayoutInflater.from(context).inflate(R.layout.item,parent,false);
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, final int position) {
 
-//        View itemView = View.inflate(context, R.layout.item, null);
-        View itemView = View.inflate(context, R.layout.item, null);
-        MyViewHolder myViewHolder = new MyViewHolder(itemView);
+        View inflate = LayoutInflater.from(context).inflate(R.layout.item,parent,false);
+        MyViewHolder myViewHolder = new MyViewHolder(inflate);
+
+
+
         return myViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int position) {
-//        myViewHolder.textView.setText(list.get(position));
-        GoodsEntity data = goodsEntityList.get(position);
+    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, final int position) {
+
+        myViewHolder.time.setText(datas.get(position).getPasstime());
+
+        Picasso.with(context).load(datas.get(position).getImage()).into(myViewHolder.goodsimg);
+        myViewHolder.title.setText(datas.get(position).getTitle());
+        myViewHolder.path.setText(datas.get(position).getPath());
+
+        myViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context,testActivity.class);
+
+                Bundle bundle = new Bundle();
+                bundle.putString("time",datas.get(position).getPasstime());
+                bundle.putString("img",datas.get(position).getImage());
+                bundle.putString("path",datas.get(position).getPath());
+
+//                bundle.putParcelable("img",datas.get(position).getImage());
+                bundle.putString("title",datas.get(position).getTitle());
+
+                intent.putExtras(bundle);
+                Toast.makeText(context,"position"+position+ " ---你点击了这一行"+datas.get(position).getTitle(), Toast.LENGTH_SHORT).show();
+                context.startActivity(intent);
+            }
+        });
+
+
+
+
+//        myViewHolder.time.setText(data.get(position).getPathtime());
+//        Picasso.with(context).load(data.get(position).getImage()).into(myViewHolder.goodsimg);
+//        myViewHolder.title.setText(data.get(position).getTitle());
+//        myViewHolder.path.setText(data.get(position).getTime());
+
+
+//        myViewHolder.time.setText(data.get(position).getId());
+//        Picasso.with(context).load(data.get(position).getPic()).into(myViewHolder.goodsimg);
+//        myViewHolder.title.setText(data.get(position).getTitle());
+//        myViewHolder.path.setText(data.get(position).getCollect_num());
+
     }
 
     @Override
     public int getItemCount() {
-        return goodsEntityList.size();
+        return datas.size();
+    }
+    public void refrest(List<Bean.ResultBean> list){
+        this.datas.addAll(list);
+        notifyDataSetChanged();
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView textView;
-                ImageView imageView;
+        TextView time,title,path;
+        ImageView goodsimg;
+        ConstraintLayout constraintLayout;
         public MyViewHolder(View itemView) {
             super(itemView);
-            textView = (TextView) itemView.findViewById(R.id.test_view);
-            imageView = (ImageView) itemView.findViewById(R.id.imageView2);
+            title = (TextView) itemView.findViewById(R.id.goodstitle);
+            time = (TextView) itemView.findViewById(R.id.goodstime);
+            goodsimg = (ImageView) itemView.findViewById(R.id.goodsimg);
+            path = (TextView) itemView.findViewById(R.id.path);
+
+
+
         }
     }
 
