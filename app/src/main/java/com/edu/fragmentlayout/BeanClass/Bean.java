@@ -1,4 +1,4 @@
-package com.edu.fragmentlayout;
+package com.edu.fragmentlayout.BeanClass;
 
 import java.util.List;
 
@@ -82,8 +82,6 @@ public class Bean {
             this.passtime = passtime;
         }
     }
-
-
     //        private String id;
 //        private String title;
 //        private String pic;

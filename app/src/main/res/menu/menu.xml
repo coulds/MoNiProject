@@ -1,21 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
-        <item android:id="@+id/nav_call"
-            android:title="电话"
-            android:icon="@drawable/a5"/>
-        <item android:id="@+id/nav_friends"
-            android:title="好友"
-            android:icon="@drawable/a4"/>
-        <item android:id="@+id/nav_mail"
-            android:title="邮箱"
-            android:icon="@drawable/a3"/>
-        <item android:id="@+id/nav_address"
-            android:title="地址"
-            android:icon="@drawable/a2"/>
-        <item android:id="@+id/task"
-            android:title="任务"
-            android:icon="@drawable/a1"/>
+        <item
+            android:id="@+id/nav_call"
+            android:icon="@drawable/a5"
+            android:title="电话" />
+        <item
+            android:id="@+id/nav_friends"
+            android:icon="@drawable/a4"
+            android:title="好友" />
+        <item
+            android:id="@+id/nav_mail"
+            android:icon="@drawable/a3"
+            android:title="邮箱" />
+        <item
+            android:id="@+id/nav_address"
+            android:icon="@drawable/a2"
+            android:title="地址" />
+        <item
+            android:id="@+id/task"
+            android:icon="@drawable/a1"
+            android:title="任务" />
     </group>
 
 </menu>

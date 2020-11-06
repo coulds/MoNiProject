@@ -7,65 +7,64 @@
 
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/C_Layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true">
 
+        <TextView
+            android:id="@+id/goods_path"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="48dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="@+id/goods_img"
+            app:layout_constraintStart_toEndOf="@+id/goods_img" />
+
+        <TextView
+            android:id="@+id/goods_time"
+            android:layout_width="172dp"
+            android:layout_height="23dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toTopOf="@+id/goods_path"
+            app:layout_constraintStart_toEndOf="@+id/goods_img"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/goods_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="76dp"
+            android:text="TextView"
+            app:layout_constraintStart_toEndOf="@+id/goods_img"
+            app:layout_constraintTop_toTopOf="@+id/goods_img" />
+
         <ImageView
-            android:id="@+id/goodsimg"
-            android:layout_width="55dp"
-            android:layout_height="61dp"
-            android:layout_marginLeft="7dp"
-            android:layout_marginStart="7dp"
-            android:layout_marginTop="16dp"
+            android:id="@+id/goods_img"
+            android:layout_width="108dp"
+            android:layout_height="110dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@android:drawable/btn_star_big_on" />
 
-        <TextView
-            android:id="@+id/goodstime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="1dp"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="6dp"
-            android:text="TextView"
-            app:layout_constraintStart_toEndOf="@+id/goodsimg"
-            app:layout_constraintTop_toBottomOf="@+id/goodstitle" />
-
-        <TextView
-            android:id="@+id/goodstitle"
-            android:layout_width="228dp"
-            android:layout_height="36dp"
-            android:layout_marginLeft="1dp"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="16dp"
-            android:text="TextView"
-            app:layout_constraintStart_toEndOf="@+id/goodsimg"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="11dp"
+            android:layout_marginTop="16dp"
             android:background="#000"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/goodsimg" />
-
-        <TextView
-            android:id="@+id/path"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="53dp"
-            android:layout_marginStart="53dp"
-            android:layout_marginTop="6dp"
-            android:text="TextView"
-            app:layout_constraintStart_toEndOf="@+id/goodstime"
-            app:layout_constraintTop_toBottomOf="@+id/goodstitle" />
-
+            app:layout_constraintTop_toBottomOf="@+id/goods_img" />
     </android.support.constraint.ConstraintLayout>
 </RelativeLayout>

@@ -1,8 +1,7 @@
-package com.edu.fragmentlayout;
+package com.edu.fragmentlayout.Fragment;
 
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,14 +10,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.google.gson.Gson;
+import com.edu.fragmentlayout.Adapter.myAdaputer;
+import com.edu.fragmentlayout.BeanClass.Bean;
+import com.edu.fragmentlayout.Base_Url.Contant;
+import com.edu.fragmentlayout.Interface.IRetrofitService;
+import com.edu.fragmentlayout.R;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -39,7 +39,7 @@ public class NewFragment extends android.support.v4.app.Fragment {
     private Context context;
     private Bean bean;
 //    private List<Bean.Datas> arrayList = new ArrayList<>();//是食材的url
-    private List<Bean.ResultBean> datas = new ArrayList<>();
+    private List<Bean.ResultBean> datas = new ArrayList<>();//测试的网址
     private View NewLayout;
     private String ur="https://api.apiopen.top/getWangYiNews?page=1&count=5";
 
@@ -55,7 +55,6 @@ public class NewFragment extends android.support.v4.app.Fragment {
 
          NewLayout = inflater.inflate(R.layout.fragment_new, container, false);
         initview();
-
  Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Contant.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -74,16 +73,7 @@ public class NewFragment extends android.support.v4.app.Fragment {
                 Bean bean = response.body();
                 datas.addAll(bean.getResult());
                 myadaputer.refrest(datas);
-//                Log.d(TAG,"看看"+response);
-//                    Bean bean = response.body();
-//                    arrayList.addAll(bean.getData());
-//                Log.d(TAG,"看看1"+arrayList);
-//                    Log.d(TAG,"看看2"+bean);
-//                    myadaputer.refrest(arrayList);
-
-
             }
-
             @Override
             public void onFailure(Call<Bean> call, Throwable t) {
                 Log.d("TAG","看看2"+t);

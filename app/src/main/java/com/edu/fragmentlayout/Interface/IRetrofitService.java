@@ -1,4 +1,6 @@
-package com.edu.fragmentlayout;
+package com.edu.fragmentlayout.Interface;
+
+import com.edu.fragmentlayout.BeanClass.Bean;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

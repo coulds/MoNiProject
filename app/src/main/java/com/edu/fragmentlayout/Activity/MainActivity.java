@@ -1,5 +1,6 @@
-package com.edu.fragmentlayout;
+package com.edu.fragmentlayout.Activity;
 
+import android.annotation.SuppressLint;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -9,27 +10,40 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.edu.fragmentlayout.Fragment.ContacksFragment;
+import com.edu.fragmentlayout.Fragment.MessageFragment;
+import com.edu.fragmentlayout.Fragment.NewFragment;
+import com.edu.fragmentlayout.R;
+import com.edu.fragmentlayout.Fragment.SetFragment;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
     private static final String TAG ="MainActivity" ;
-    private ImageView menu;
-    private NavigationView navigationView;
-    private Toolbar toolbar;
-    private DrawerLayout mdrawerLayout;
+
+
     private MessageFragment messageFragment;
     private NewFragment newFragment;
     private SetFragment setFragment;
     private ContacksFragment contacksFragment;
-    private View messagelayout;
-    private View newlayout;
-    private View setlayout;
-    private View contactslayout;
-    private ImageView messageImage;
+
+//    private View newlayout;
+//    private View setlayout;
+//    private View contactslayout;
+//    private View messagelayout;
+
+   private RelativeLayout contactslayout;
+   private RelativeLayout messagelayout;
+   private RelativeLayout setlayout;
+   private RelativeLayout newlayout;
+
+
     private android.app.FragmentManager manager;
     private FragmentTransaction ft;
 
-
+    private ImageView messageImage;
     private ImageView contactsImage;
     private ImageView newsImage;
     private ImageView settingImage;
@@ -38,32 +52,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView newsText;
     private TextView settingText;
 
+
+
     private FragmentManager fragmentManager;
     private ContacksFragment contacksFragment1 = new ContacksFragment();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        getSupportActionBar().hide();
+
         initview();
-        inData();
+
         fragmentManager  = getSupportFragmentManager();
         setTabSelection(0);
         getSupportFragmentManager();
-        mdrawerLayout = (DrawerLayout) findViewById(R.id.dl_drawerlayout);
-
     }
-
-    private void inData() {
-    }
-
-
 
 
     private void initview() {
-        navigationView = (NavigationView) findViewById(R.id.nav_view);//侧边栏
-//        menu = (ImageView) findViewById(R.id.mian_menu);
+
+
         messagelayout = findViewById(R.id.message_layout);
         contactslayout = findViewById(R.id.contacts_layout);
         newlayout = findViewById(R.id.news_layout);
@@ -83,29 +93,45 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         contactslayout.setOnClickListener(this);
         newlayout.setOnClickListener(this);
         setlayout.setOnClickListener(this);
-//        menu.setOnClickListener(this);
 
+
+
+//        caidan.setOnClickListener(this);
+
+    }
+    public void seleted() {
+        messageImage.setSelected(false);
+        contactsImage.setSelected(false);
+        newsImage.setSelected(false);
+        settingImage.setSelected(false);
+
+        messageText.setSelected(false);
+        contactsText.setSelected(false);
+        newsText.setSelected(false);
+        settingText.setSelected(false);
     }
 
 
+    @SuppressLint("ResourceType")
     public void setTabSelection(int index) {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         hideFragment(transaction);
         switch (index){
             case 0:
+                seleted();
+                messageImage.setSelected(true);//message是咖啡
+                messageText.setSelected(true);
                 if (messageFragment == null){
                     messageFragment = new MessageFragment();
                     transaction.add(R.id.content,messageFragment);
-                    messageText.setTextColor(this.getResources().getColor(R.color.color_green));
-                    messageImage.setImageResource(R.drawable.coffee_color);
-
-//                    newsText.setTextColor(this.getResources().getColor(R.color.color_green));
-//                    newsImage.setImageResource(R.drawable.coffee_color);
                 }else {
                     transaction.show(messageFragment);
                 }
                 break;
             case 1:
+                seleted();
+                contactsImage.setSelected(true);//contact是饮料
+                contactsText.setSelected(true);
                 if (newFragment == null){
                     newFragment = new NewFragment();
                     transaction.add(R.id.content,newFragment);
@@ -114,17 +140,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
             case 2:
+                seleted();
+                newsImage.setSelected(true);//new是啤酒
+                newsText.setSelected(true);
                 if (setFragment == null){
                     setFragment = new SetFragment();
                     transaction.add(R.id.content,setFragment);
+
                 }else {
                     transaction.show(setFragment);
                 }
                 break;
             case 3:
+                seleted();
+                settingImage.setSelected(true);//setting是我的
+                settingText.setSelected(true);
                 if (contacksFragment == null){
                     contacksFragment = new ContacksFragment();
                     transaction.add(R.id.content,contacksFragment);
+
                 }else {
                     transaction.show(contacksFragment);
                 }
@@ -149,9 +183,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+
     @Override
     public void onClick(View v) {
+
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        hideFragment(transaction);
+
         switch (v.getId()) {
+
             case R.id.message_layout:
                 // 当点击了消息tab时，选中第1个tab
                 setTabSelection(0);
@@ -168,13 +208,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 // 当点击了设置tab时，选中第4个tab
                 setTabSelection(3);
                 break;
-//            case R.id.mian_menu:
-//                if (mdrawerLayout.isDrawerOpen(navigationView)){
-//                    mdrawerLayout.closeDrawer(navigationView);
-//                }else {
-//                    mdrawerLayout.openDrawer(navigationView);
-//                }
-//                break;
+
+
+
+
 
             default:
                 break;

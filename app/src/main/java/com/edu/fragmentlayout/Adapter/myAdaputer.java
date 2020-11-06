@@ -1,27 +1,24 @@
-package com.edu.fragmentlayout;
+package com.edu.fragmentlayout.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Binder;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
+import com.edu.fragmentlayout.BeanClass.Bean;
+import com.edu.fragmentlayout.R;
+import com.edu.fragmentlayout.Activity.testActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.nostra13.universalimageloader.core.ImageLoader.TAG;
 
 
 public class myAdaputer extends RecyclerView.Adapter<myAdaputer.MyViewHolder>{
@@ -50,9 +47,6 @@ public class myAdaputer extends RecyclerView.Adapter<myAdaputer.MyViewHolder>{
 
         View inflate = LayoutInflater.from(context).inflate(R.layout.item,parent,false);
         MyViewHolder myViewHolder = new MyViewHolder(inflate);
-
-
-
         return myViewHolder;
     }
 
@@ -60,7 +54,6 @@ public class myAdaputer extends RecyclerView.Adapter<myAdaputer.MyViewHolder>{
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, final int position) {
 
         myViewHolder.time.setText(datas.get(position).getPasstime());
-
         Picasso.with(context).load(datas.get(position).getImage()).into(myViewHolder.goodsimg);
         myViewHolder.title.setText(datas.get(position).getTitle());
         myViewHolder.path.setText(datas.get(position).getPath());
@@ -74,18 +67,14 @@ public class myAdaputer extends RecyclerView.Adapter<myAdaputer.MyViewHolder>{
                 bundle.putString("time",datas.get(position).getPasstime());
                 bundle.putString("img",datas.get(position).getImage());
                 bundle.putString("path",datas.get(position).getPath());
-
 //                bundle.putParcelable("img",datas.get(position).getImage());
                 bundle.putString("title",datas.get(position).getTitle());
 
                 intent.putExtras(bundle);
-                Toast.makeText(context,"position"+position+ " ---你点击了这一行"+datas.get(position).getTitle(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context,"position"+position+ " ---你点击了这一行"+datas.get(position).getTitle(), Toast.LENGTH_SHORT).show();
                 context.startActivity(intent);
             }
         });
-
-
-
 
 //        myViewHolder.time.setText(data.get(position).getPathtime());
 //        Picasso.with(context).load(data.get(position).getImage()).into(myViewHolder.goodsimg);
@@ -115,12 +104,10 @@ public class myAdaputer extends RecyclerView.Adapter<myAdaputer.MyViewHolder>{
         ConstraintLayout constraintLayout;
         public MyViewHolder(View itemView) {
             super(itemView);
-            title = (TextView) itemView.findViewById(R.id.goodstitle);
-            time = (TextView) itemView.findViewById(R.id.goodstime);
-            goodsimg = (ImageView) itemView.findViewById(R.id.goodsimg);
-            path = (TextView) itemView.findViewById(R.id.path);
-
-
+            title = (TextView) itemView.findViewById(R.id.goods_title);
+            time = (TextView) itemView.findViewById(R.id.goods_time);
+            goodsimg = (ImageView) itemView.findViewById(R.id.goods_img);
+            path = (TextView) itemView.findViewById(R.id.goods_path);
 
         }
     }

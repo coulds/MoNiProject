@@ -1,22 +1,26 @@
-package com.edu.fragmentlayout;
+package com.edu.fragmentlayout.Activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.edu.fragmentlayout.R;
 
 import java.net.URL;
 
-public class testActivity extends AppCompatActivity {
+public class testActivity extends AppCompatActivity{
     private TextView time,path,title;
     private ImageView img;
-    private String picurl;
+    private Button button_back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +30,7 @@ public class testActivity extends AppCompatActivity {
        String datas_time = bundle.getString("time");
        String datas_path = bundle.getString("path");
        String datas_title = bundle.getString("title");
-        String datas_img = bundle.getString("img");
+       String datas_img = bundle.getString("img");
 
 
 
@@ -42,8 +46,15 @@ public class testActivity extends AppCompatActivity {
         path = findViewById(R.id.text_path);
         title = findViewById(R.id.text_title);
         img = findViewById(R.id.text_img);
-
-
-
+        button_back = findViewById(R.id.btn_finsh);
+        button_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
+
+
+
 }
