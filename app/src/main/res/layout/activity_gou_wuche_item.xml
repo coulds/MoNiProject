@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="125dp"
+    android:layout_height="140dp"
     android:background="@drawable/bg_item"
     android:paddingRight="10dp"
     tools:context=".Activity.GouWuche_itemActivity">
@@ -12,7 +12,10 @@
     <RelativeLayout
         android:id="@+id/item_check"
         android:layout_width="40dp"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <CheckBox
             android:id="@+id/checkBox"
@@ -30,10 +33,10 @@
 
     <ImageView
         android:id="@+id/item_pic"
-        android:layout_width="79dp"
-        android:layout_height="103dp"
+        android:layout_width="100dp"
+        android:layout_height="120dp"
         android:layout_centerVertical="true"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="8dp"
         android:layout_toRightOf="@id/item_check"
         android:src="@color/colorPrimaryDark"
         app:layout_constraintStart_toEndOf="@+id/item_check"
@@ -46,9 +49,7 @@
         android:layout_alignLeft="@+id/item_spec"
         android:layout_alignStart="@+id/item_spec"
         android:layout_below="@+id/item_reduce"
-        android:layout_marginLeft="6dp"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:text="这是一只标题"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/item_pic"
@@ -61,9 +62,9 @@
         android:layout_alignBottom="@+id/item_pic"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginLeft="6dp"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="3dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
         android:text="这是一只规格"
         app:layout_constraintStart_toEndOf="@+id/item_pic"
         app:layout_constraintTop_toBottomOf="@+id/item_name" />
@@ -75,8 +76,9 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="4dp"
-        android:layout_marginStart="4dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
         android:text="￥0.00"
         android:textColor="#f0584f"
         app:layout_constraintStart_toEndOf="@+id/item_pic"
@@ -87,8 +89,8 @@
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginLeft="88dp"
-        android:layout_marginStart="88dp"
+        android:layout_marginLeft="76dp"
+        android:layout_marginStart="76dp"
         android:layout_marginTop="64dp"
         android:layout_toLeftOf="@+id/item_num"
 
