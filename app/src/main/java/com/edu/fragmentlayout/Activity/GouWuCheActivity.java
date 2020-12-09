@@ -26,6 +26,7 @@ public class GouWuCheActivity extends AppCompatActivity {
         setContentView(R.layout.activity_gou_wu_che);
 
         Bundle bundle = this.getIntent().getExtras();
+
 //        String time = bundle.getString("time");
 //        String pid = bundle.getString("pid");
 //        String cid= bundle.getString("cid");

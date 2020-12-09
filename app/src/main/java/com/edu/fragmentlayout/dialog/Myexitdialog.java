@@ -1,6 +1,7 @@
 package com.edu.fragmentlayout.dialog;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -59,14 +60,22 @@ public class Myexitdialog extends DialogFragment implements View.OnClickListener
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.dialog_btn_confirm:
+                System.exit(0);
                 getActivity().finish();
                 break;
             case R.id.dialog_btn_cancle:
+                sendBroadcast();
                 dismiss();
                 break;
                 default:
                     break;
         }
 
+    }
+
+    private void sendBroadcast(){
+        Intent intent = new Intent();
+        intent.setAction("ok");
+        intent.putExtra("send" , "哈哈哈cancle show dialog");
     }
 }

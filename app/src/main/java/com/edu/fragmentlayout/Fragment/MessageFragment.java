@@ -54,25 +54,31 @@ public class MessageFragment extends android.support.v4.app.Fragment {
          messageLayout = inflater.inflate(R.layout.fragment_message, container, false);
          context = this.context;
         initRecyclerView();
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Contant_one.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        FoodRetrofitService foodRetrofitService = retrofit.create(FoodRetrofitService.class);
-        Call<FoodBean> call = foodRetrofitService.getUrl(ur);
-        call.enqueue(new Callback<FoodBean>() {
-            @Override
-            public void onResponse(Call<FoodBean> call, Response<FoodBean> response) {
-                FoodBean bean = response.body();
-                arrayList.addAll(bean.getData());
-                foodAdapter.refrest(arrayList);
-            }
 
-            @Override
-            public void onFailure(Call<FoodBean> call, Throwable t) {
-                Log.d(TAG, "看看: "+t);
-            }
-        });
+        try {
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl(Contant_one.BASE_URL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+            FoodRetrofitService foodRetrofitService = retrofit.create(FoodRetrofitService.class);
+            Call<FoodBean> call = foodRetrofitService.getUrl(ur);
+            call.enqueue(new Callback<FoodBean>() {
+                @Override
+                public void onResponse(Call<FoodBean> call, Response<FoodBean> response) {
+                    FoodBean bean = response.body();
+                    arrayList.addAll(bean.getData());
+                    foodAdapter.refrest(arrayList);
+                }
+
+                @Override
+                public void onFailure(Call<FoodBean> call, Throwable t) {
+                    Log.d(TAG, "看看: "+t);
+                }
+            });
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
         return messageLayout;
     }
 

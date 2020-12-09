@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:orientation="vertical"
     android:id="@+id/dl_drawerlayout"
     tools:context=".Activity.MainActivity">
@@ -18,13 +19,18 @@
         tools:ignore="Suspicious0dp">
 
 
-        <LinearLayout
 
+
+
+
+        <LinearLayout
             android:id="@+id/bottom_layout"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_gravity="bottom"
+
             android:background="@android:color/background_light">
+
 
 
             <RelativeLayout
@@ -143,7 +149,9 @@
                 </LinearLayout>
             </RelativeLayout>
 
+
         </LinearLayout>
+
 
     </FrameLayout>
 

@@ -9,6 +9,7 @@ import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -49,10 +50,11 @@ public class SetFragment extends android.support.v4.app.Fragment implements View
     private NavigationView navigationView;
     private Toolbar toolbar;
     private DrawerLayout mdrawerLayout;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
 
     private View SetLayout;
-    private Context context;
+    private Boolean isrefresh = false;
     private com.edu.fragmentlayout.Adapter.pictureAdapter pictureAdapter;
     private RecyclerView recyclerView;
     private PictureBean bean;
@@ -70,7 +72,6 @@ public class SetFragment extends android.support.v4.app.Fragment implements View
                              Bundle savedInstanceState) {
 
         SetLayout = inflater.inflate(R.layout.fragment_set, container, false);
-
 //       Toolbar toolbar = (Toolbar)getActivity().findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
 //        ActionBar actionBar=getActivity().getSupportActionBar();
@@ -80,25 +81,9 @@ public class SetFragment extends android.support.v4.app.Fragment implements View
 //        }
 
         initview();
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Contant_two.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        PictureRetrofitService pictureRetrofitService = retrofit.create(PictureRetrofitService.class);
-        Call<PictureBean> call = pictureRetrofitService.getUrl(url);
-        call.enqueue(new Callback<PictureBean>() {
-            @Override
-            public void onResponse(Call<PictureBean> call, Response<PictureBean> response) {
-                PictureBean bean = response.body();
-                Log.d(TAG, "看看"+bean);
-                dataBean.addAll(bean.getData());
-                pictureAdapter.refrest(dataBean);
-            }
-            @Override
-            public void onFailure(Call<PictureBean> call, Throwable t) {
-                Log.d(TAG, "onFailure: "+t);
-            }
-        });
+        setSwipeRefreshLayout();
+        NetData();
+
         return SetLayout;
 
     }
@@ -121,6 +106,27 @@ public class SetFragment extends android.support.v4.app.Fragment implements View
         tongzhi_img.setOnClickListener(this);
         menu.setOnClickListener(this);
         }
+        private void setSwipeRefreshLayout(){
+        swipeRefreshLayout = (SwipeRefreshLayout) SetLayout.findViewById(R.id.sw_refresh);
+        swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+
+                swipeRefreshLayout.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        dataBean.clear();
+                        NetData();
+                        pictureAdapter.notifyDataSetChanged();
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                },4000);
+
+            }
+        });
+        }
 
     @Override
     public void onClick(View view) {
@@ -137,6 +143,27 @@ public class SetFragment extends android.support.v4.app.Fragment implements View
                 Toast.makeText(getActivity(),"暂时还没有事情通知哦！！！",Toast.LENGTH_LONG).show();
         }
 
+    }
+    private void NetData(){
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Contant_two.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        PictureRetrofitService pictureRetrofitService = retrofit.create(PictureRetrofitService.class);
+        Call<PictureBean> call = pictureRetrofitService.getUrl(url);
+        call.enqueue(new Callback<PictureBean>() {
+            @Override
+            public void onResponse(Call<PictureBean> call, Response<PictureBean> response) {
+                PictureBean bean = response.body();
+                Log.d(TAG, "看看"+bean);
+                dataBean.addAll(bean.getData());
+                pictureAdapter.refrest(dataBean);
+            }
+            @Override
+            public void onFailure(Call<PictureBean> call, Throwable t) {
+                Log.d(TAG, "onFailure: "+t);
+            }
+        });
     }
 }
 

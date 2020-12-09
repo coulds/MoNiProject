@@ -85,7 +85,8 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="250dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_alignParentLeft="true">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -242,12 +243,20 @@
                         android:src="@drawable/xiaoxi" />
 
                     <TextView
+                        android:ellipsize="marquee"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:scrollHorizontally="true"
+                        android:singleLine="true"
+
+                        android:id="@+id/message1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="4"
                         android:gravity="center|start"
-                        android:text="我的消息" />
+                        android:text="我的消息1321542154215421542154212155213156123156123135451321654132135412115" />
 
                     <ImageView
                         android:id="@+id/imageView4"
@@ -281,29 +290,35 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:id="@+id/imageView2"
-                        android:layout_width="2dp"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:src="@drawable/youhuijuan" />
 
-                    <TextView
-                        android:id="@+id/yhj"
-                        android:layout_width="22dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="4"
                         android:ellipsize="marquee"
-
                         android:focusable="true"
                         android:focusableInTouchMode="true"
                         android:marqueeRepeatLimit="marquee_forever"
                         android:scrollHorizontally="true"
                         android:singleLine="true"
 
+                        android:id="@+id/yhj_picture"
+                        android:layout_width="22dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:src="@drawable/youhuijuan" />
+                    <TextView
+                        android:id="@+id/yhj1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="4"
 
-                        android:text="我的优惠劵1324567984613201365485441215485652154" />
+                        android:ellipsize="marquee"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:scrollHorizontally="true"
+                        android:singleLine="true"
+
+                        android:text="我的优惠劵" />
 
                     <ImageView
                         android:id="@+id/imageView4"
@@ -346,13 +361,15 @@
                         android:src="@drawable/my_gouwuche" />
 
                     <TextView
+
+                        android:ellipsize="marquee"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:scrollHorizontally="true"
+                        android:singleLine="true"
+
                         android:id="@+id/gwc_text"
-
-
-
-
-
-
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"

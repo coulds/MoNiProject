@@ -1,6 +1,7 @@
 package com.edu.fragmentlayout.Activity;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.edu.fragmentlayout.BeanClass.DataBean;
 
@@ -11,9 +12,16 @@ public class AppApplication extends Application {
 
     private static List<DataBean> dataBeanList=new ArrayList<>();
     private static Application instance;
+    private static Context context;
+
+
+
+
+
     @Override
     public void onCreate() {
         super.onCreate();
+        context = this.getApplicationContext();
         instance=this;
     }
 
@@ -27,5 +35,9 @@ public class AppApplication extends Application {
 
     public static void setDataBeanList(DataBean dataBeanList1) {
         dataBeanList .add(dataBeanList1);
+    }
+
+    public static Context getContext() {
+        return context;
     }
 }
