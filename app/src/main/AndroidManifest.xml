@@ -14,16 +14,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Activity.MainActivity">
+
+        </activity>
+        <activity android:name=".Activity.testActivity" />
+        <activity android:name=".Activity.FengjingActivity" />
+        <activity android:name=".Activity.GouWuCheActivity" />
+        <activity android:name=".Activity.GouWuche_itemActivity" />
+        <activity android:name=".Animator.Loding">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.testActivity" />
-        <activity android:name=".Activity.FengjingActivity" />
-        <activity android:name=".Activity.GouWuCheActivity" />
-        <activity android:name=".Activity.GouWuche_itemActivity"></activity>
     </application>
 
 </manifest>
