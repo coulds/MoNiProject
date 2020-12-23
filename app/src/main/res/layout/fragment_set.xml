@@ -7,93 +7,62 @@
     android:layout_marginBottom="60dp"
     tools:context=".Fragment.SetFragment">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="@color/colorPrimaryDark">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="80dp"
-            android:text="风景图"
-            android:textSize="20sp" />
-
-        <!--<ImageView-->
-            <!--android:id="@+id/tongzhi"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="right"-->
-            <!--android:layout_marginRight="20dp"-->
-            <!--android:layout_marginTop="5dp"-->
-            <!--android:src="@drawable/tongzhi" />-->
-
-        <!--<ImageView-->
-            <!--android:id="@+id/imageView3"-->
-            <!--android:layout_width="22dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="left"-->
-            <!--android:layout_marginLeft="50dp"-->
-            <!--android:layout_marginTop="3dp"-->
-            <!--android:src="@drawable/sousuo" />-->
-
-        <!--<ImageView-->
-            <!--android:id="@+id/caidan"-->
-            <!--android:layout_width="33dp"-->
-            <!--android:layout_height="29dp"-->
-            <!--android:layout_marginLeft="10dp"-->
-            <!--android:layout_marginTop="5dp"-->
-            <!--android:src="@drawable/caidan" />-->
-
-
-    </android.support.v7.widget.Toolbar>
-
-
-    <!--<TextView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginLeft="80dp"-->
-        <!--android:text="风景图"-->
-        <!--android:textSize="20sp" />-->
-
-    <ImageView
-    android:id="@+id/tongzhi"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="right"
-    android:layout_marginRight="20dp"
-    android:layout_marginTop="5dp"
-    android:src="@drawable/tongzhi" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="22dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="3dp"
-        android:src="@drawable/sousuo" />
-
-    <ImageView
-        android:id="@+id/caidan"
-        android:layout_width="33dp"
-        android:layout_height="29dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
-        android:src="@drawable/caidan" />
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/sw_refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="40dp" >
+        android:layout_height="match_parent">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/pic_recycleview"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@color/colorPrimaryDark"
+                    app:logo="@drawable/fengjin"
+                    app:navigationIcon="@drawable/caidan_white"
+                    app:popupTheme="@style/ToolbarPopupTheme"
+                    app:titleTextColor="@color/white">
+
+                    <TextView
+                        android:id="@+id/textView6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="风景图"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </android.support.v7.widget.Toolbar>
+
+                <com.youth.banner.Banner
+                    android:id="@+id/fengjingbanner"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp">
+
+                </com.youth.banner.Banner>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/pic_recycleview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+
+            </LinearLayout>
+        </ScrollView>
+
+
     </android.support.v4.widget.SwipeRefreshLayout>
+
+
 
 
 
