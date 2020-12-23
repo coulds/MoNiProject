@@ -1,5 +1,6 @@
 package com.edu.fragmentlayout.Activity;
 
+import android.animation.Animator;
 import android.annotation.SuppressLint;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
@@ -8,20 +9,33 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.edu.fragmentlayout.Animator.Kawaii_LoadingView;
+import com.edu.fragmentlayout.Animator.Loding;
 import com.edu.fragmentlayout.Fragment.ContacksFragment;
 import com.edu.fragmentlayout.Fragment.MessageFragment;
 import com.edu.fragmentlayout.Fragment.NewFragment;
 import com.edu.fragmentlayout.R;
 import com.edu.fragmentlayout.Fragment.SetFragment;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG ="MainActivity" ;
+    private long mExitTime;
+    private Kawaii_LoadingView kawaii_loadingView;
+    private Loding loding;
+    private Timer timer = new Timer();
 
 
     private MessageFragment messageFragment;
@@ -64,11 +78,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         initview();
+//        AnimatorStar();
+//        AnimatorCanle();
+
+
 
         fragmentManager  = getSupportFragmentManager();
         setTabSelection(0);
         getSupportFragmentManager();
     }
+
+//    private void AnimatorCanle() {
+//        TimerTask timerTask = new TimerTask() {
+//            @Override
+//            public void run() {
+//                kawaii_loadingView.stopMoving();
+//                timer.cancel();
+//            }
+//        };
+//        timer.schedule(timerTask,1500);
+//    }
+//
+//    private void AnimatorStar() {
+//        kawaii_loadingView.startMoving();
+//    }
 
 
     private void initview() {
@@ -88,6 +121,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         contactsText = (TextView) findViewById(R.id.contacts_text);
         newsText = (TextView) findViewById(R.id.news_text);
         settingText = (TextView) findViewById(R.id.setting_text);
+
+
+
+
 
         messagelayout.setOnClickListener(this);
         contactslayout.setOnClickListener(this);
@@ -210,13 +247,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
 
-
-
-
             default:
                 break;
         }
 
     }
+//再点一次就退出程序
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
 
+        if (keyCode == KeyEvent.KEYCODE_BACK){
+            if (System.currentTimeMillis() - mExitTime > 2000){
+                Toast.makeText(MainActivity.this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
+                mExitTime = System.currentTimeMillis();
+            }else {
+                System.exit(0);
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+//        return super.onCreateOptionsMenu(menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.toolbar,menu);
+        return true;
+    }
+
+    @Override
+    protected void onDestroy() {
+
+        super.onDestroy();
+    }
 }

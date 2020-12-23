@@ -2,6 +2,7 @@ package com.edu.fragmentlayout.Fragment;
 
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,6 +17,10 @@ import com.edu.fragmentlayout.BeanClass.FoodBean;
 import com.edu.fragmentlayout.Base_Url.Contant_one;
 import com.edu.fragmentlayout.Interface.FoodRetrofitService;
 import com.edu.fragmentlayout.R;
+
+import org.litepal.LitePal;
+import org.litepal.crud.DataSupport;
+import org.litepal.tablemanager.Connector;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +52,7 @@ public class MessageFragment extends android.support.v4.app.Fragment {
 
 
 
-
+//食材的fragment，第一个fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -68,6 +73,13 @@ public class MessageFragment extends android.support.v4.app.Fragment {
                     FoodBean bean = response.body();
                     arrayList.addAll(bean.getData());
                     foodAdapter.refrest(arrayList);
+                    //数据库保存
+//                    SQLiteDatabase db = Connector.getDatabase();
+//                    DataSupport.deleteAll(FoodBean.class);
+//                    DataSupport.saveAll(arrayList);
+//                    arrayList.add(new FoodBean.DataBean(1,"123","hahaha","hajaa1","hahah1","ahahha"));
+//                    bean.save();
+////                    Log.d(TAG, "数据库："+arrayList);
                 }
 
                 @Override

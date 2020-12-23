@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.edu.fragmentlayout.BeanClass.PictureBean;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,20 +20,21 @@ import java.util.List;
  */
 public class IntentFragment extends android.support.v4.app.Fragment {
     private Context context;
+
     private List list;
     private View lntentLayout;
 
     private com.edu.fragmentlayout.Adapter.pictureAdapter pictureAdapter;
     private RecyclerView picrecyclerView;
 //    private List<PictureBean.DataBean> dataBean = new ArrayList<>();
-    private String url ="http://wallpaper.apc.360.cn/index.php?c=WallPaperAndroid&a=getAppsByCategory&cid=1&start=0&count=99";
+
 
 
     public IntentFragment() {
         // Required empty public constructor
     }
 
-
+//没有用的fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -61,6 +62,7 @@ public class IntentFragment extends android.support.v4.app.Fragment {
     }
 
     private void initview() {
+
 //        picrecyclerView = lntentLayout.findViewById(R.id.pictureRecycleview);
 //        GridLayoutManager manager = new GridLayoutManager(this.getActivity(),2);
 //        manager.setOrientation(GridLayoutManager.DEFAULT_SPAN_COUNT);

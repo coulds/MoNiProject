@@ -1,9 +1,11 @@
 package com.edu.fragmentlayout.BeanClass;
 
+import org.litepal.crud.DataSupport;
+
 import java.io.Serializable;
 
-public class DataBean implements Serializable {
-
+public class DataBean implements Serializable{
+    // 购物车页面
     /**
      * pid : 286730 //价格
      * cid : 1 //选中状态

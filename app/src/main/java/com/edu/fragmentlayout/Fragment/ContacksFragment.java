@@ -36,7 +36,7 @@ public class ContacksFragment extends android.support.v4.app.Fragment implements
         // Required empty public constructor
     }
 
-
+//设置页面的fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

@@ -5,6 +5,9 @@ import android.content.Context;
 
 import com.edu.fragmentlayout.BeanClass.DataBean;
 
+import org.litepal.LitePal;
+import org.litepal.LitePalApplication;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +25,7 @@ public class AppApplication extends Application {
     public void onCreate() {
         super.onCreate();
         context = this.getApplicationContext();
+        LitePal.initialize(this);
         instance=this;
     }
 
@@ -40,4 +44,6 @@ public class AppApplication extends Application {
     public static Context getContext() {
         return context;
     }
+
+
 }

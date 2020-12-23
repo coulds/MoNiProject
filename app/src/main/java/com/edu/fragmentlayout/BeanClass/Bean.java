@@ -3,6 +3,7 @@ package com.edu.fragmentlayout.BeanClass;
 import java.util.List;
 
 public class Bean {
+    //第二个界面
     /**
      * code : 200
      * message : 成功!

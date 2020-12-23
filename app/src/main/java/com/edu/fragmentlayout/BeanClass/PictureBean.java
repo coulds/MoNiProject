@@ -4,6 +4,8 @@ import java.util.List;
 
 public class PictureBean {
 
+
+
     private String errno;
     private String errmsg;
     private String consume;

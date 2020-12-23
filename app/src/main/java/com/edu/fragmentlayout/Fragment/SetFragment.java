@@ -15,11 +15,13 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.edu.fragmentlayout.Activity.GouWuCheActivity;
 import com.edu.fragmentlayout.Activity.MainActivity;
 import com.edu.fragmentlayout.Adapter.pictureAdapter;
 import com.edu.fragmentlayout.BeanClass.DataBean;
@@ -66,6 +68,7 @@ public class SetFragment extends android.support.v4.app.Fragment implements View
         // Required empty public constructor
     }
 
+    //风景的fragment，第三个页面
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -122,7 +125,7 @@ public class SetFragment extends android.support.v4.app.Fragment implements View
                         pictureAdapter.notifyDataSetChanged();
                         swipeRefreshLayout.setRefreshing(false);
                     }
-                },4000);
+                },2000);
 
             }
         });
@@ -165,6 +168,8 @@ public class SetFragment extends android.support.v4.app.Fragment implements View
             }
         });
     }
+
+
 }
 
 

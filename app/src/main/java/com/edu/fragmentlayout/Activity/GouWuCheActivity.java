@@ -1,10 +1,13 @@
 package com.edu.fragmentlayout.Activity;
 
+import android.nfc.Tag;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.widget.Toast;
 
 import com.edu.fragmentlayout.Adapter.GouWuCheAdapter;
 import com.edu.fragmentlayout.BeanClass.DataBean;
@@ -14,6 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GouWuCheActivity extends AppCompatActivity {
+    private long mExitTime;
+
     private RecyclerView recyclerView;
     private GouWuCheAdapter gouWuCheAdapter;
     private List<DataBean> dataBeanList = new ArrayList<>();
@@ -54,4 +59,7 @@ public class GouWuCheActivity extends AppCompatActivity {
         gouWuCheAdapter = new GouWuCheAdapter(this,dataBeanList);
         recyclerView.setAdapter(gouWuCheAdapter);
     }
+
+
+
 }

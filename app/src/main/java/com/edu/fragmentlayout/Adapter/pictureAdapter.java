@@ -13,8 +13,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.edu.fragmentlayout.BeanClass.DataBean;
-import com.edu.fragmentlayout.BeanClass.PictureBean;
+
 import com.edu.fragmentlayout.Activity.FengjingActivity;
 import com.edu.fragmentlayout.R;
 import com.squareup.picasso.Picasso;
@@ -44,7 +46,13 @@ public class pictureAdapter extends RecyclerView.Adapter<pictureAdapter.picViewH
     @Override
     public void onBindViewHolder(@NonNull pictureAdapter.picViewHolder picViewHolder, final int i) {
         picViewHolder.pic_total.setText(data.get(i).getPid());
-        Picasso.with(context).load(data.get(i).getUrl()).into(picViewHolder.pic_img);
+//        Picasso.with(context).load(data.get(i).getUrl()).into(picViewHolder.pic_img);
+        Glide.with(context)
+                .load(data.get(i).getUrl())
+                .animate(android.R.anim.slide_in_left)
+                .placeholder(R.drawable.loading)
+                .error(R.drawable.nodata)
+                .into(picViewHolder.pic_img);
         picViewHolder.pic_data.setText(data.get(i).getFav_total());
         picViewHolder.pic_cid.setText(data.get(i).getCid());
         picViewHolder.pic_number.setText(data.get(i).getC_t());
@@ -89,4 +97,6 @@ public class pictureAdapter extends RecyclerView.Adapter<pictureAdapter.picViewH
 
         }
     }
+
+
 }
