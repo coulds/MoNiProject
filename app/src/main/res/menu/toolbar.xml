@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/sousuo_white"
+        android:orderInCategory="100"
+        android:title="Search"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_notifications"
+        android:icon="@drawable/sezhi_white"
+        android:orderInCategory="100"
+        android:title="notifications"
+        app:showAsAction="ifRoom" >
+
+        <menu>
+            <group>
+                <item
+                    android:id="@+id/action_settings"
+                    android:orderInCategory="100"
+                    android:icon="@drawable/sezhi_white"
+                    android:title="设置"
+                    app:showAsAction="never" />
+                <item
+                    android:id="@+id/action_sousuo"
+                    android:orderInCategory="100"
+                    android:icon="@drawable/sousuo_white"
+                    android:title="搜索"
+                    app:showAsAction="never" />
+                <item
+                    android:id="@+id/action_qianbao"
+                    android:orderInCategory="100"
+                    android:icon="@drawable/qianbao_white"
+                    android:title="钱包"
+                    app:showAsAction="never" />
+                <item
+                    android:id="@+id/action_youhui"
+                    android:orderInCategory="100"
+                    android:title="优惠劵"
+                    android:icon="@drawable/youhuijaun_white"
+                    app:showAsAction="never" />
+            </group>
+        </menu>
+
+
+
+    </item>
+
+</menu>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,8 +8,59 @@
     tools:context=".Fragment.NewFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/collect_recyclerView"
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                app:titleTextColor="@color/white"
+                android:background="@color/colorPrimaryDark"
+                app:navigationIcon="@drawable/zuo_white"
+                app:logo="@drawable/news_1"
+                app:popupTheme="@style/ToolbarPopupTheme">
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textColor="@color/white"
+                    android:text="新闻"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+
+            </android.support.v7.widget.Toolbar>
+            <com.youth.banner.Banner
+                android:id="@+id/mbanner"
+                android:layout_width="match_parent"
+                android:layout_height="150dp">
+
+            </com.youth.banner.Banner>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/collect_recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+
+
+
+            </android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
+
 </FrameLayout>

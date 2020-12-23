@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    //动画的属性
     <declare-styleable name="Kawaii_LoadingView">
         <attr name="half_BlockWidth" format="dimension" />
         <attr name="blockInterval" format="dimension" />
