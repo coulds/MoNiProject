@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,46 +8,57 @@
     tools:context=".Fragment.SetFragment">
 
 
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/colorPrimaryDark"
+                app:logo="@drawable/fengjin"
+
+                app:navigationIcon="@drawable/caidan_white"
+                app:popupTheme="@style/ToolbarPopupTheme"
+                app:titleTextColor="@color/white">
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="风景图"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/sw_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
-
-                <android.support.v7.widget.Toolbar
-                    android:id="@+id/toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:background="@color/colorPrimaryDark"
-                    app:logo="@drawable/fengjin"
-                    app:navigationIcon="@drawable/caidan_white"
-                    app:popupTheme="@style/ToolbarPopupTheme"
-                    app:titleTextColor="@color/white">
-
-                    <TextView
-                        android:id="@+id/textView6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="风景图"
-                        android:textColor="@color/white"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-                </android.support.v7.widget.Toolbar>
 
                 <com.youth.banner.Banner
                     android:id="@+id/fengjingbanner"
                     android:layout_width="match_parent"
-                    android:layout_height="150dp">
-
+                    android:layout_height="150dp"
+                    android:layout_marginTop="40dp"
+                    app:layout_scrollFlags="scroll">
                 </com.youth.banner.Banner>
 
                 <android.support.v7.widget.RecyclerView
@@ -55,15 +66,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
 
-
             </LinearLayout>
-        </ScrollView>
 
-
+    </android.support.v4.widget.NestedScrollView>
     </android.support.v4.widget.SwipeRefreshLayout>
 
 
 
 
 
-</FrameLayout>
+
+</android.support.design.widget.CoordinatorLayout>

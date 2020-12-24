@@ -118,12 +118,12 @@ public class NewFragment extends android.support.v4.app.Fragment {
 
         banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE);
         banner.setImageLoader(mImageLoader);
-        banner.setBannerAnimation(Transformer.ZoomOutSlide);
+        banner.setBannerAnimation(Transformer.Default);
         banner.setBannerTitles(imagetitle);
         banner.setImages(imagepath);
         banner.setDelayTime(3000);
         banner.isAutoPlay(true);
-        banner.setIndicatorGravity(BannerConfig.CENTER);
+        banner.setIndicatorGravity(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE);
         banner.start();
         banner.setOnBannerListener(new OnBannerListener() {
             @Override
@@ -191,13 +191,11 @@ public class NewFragment extends android.support.v4.app.Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.toolbar,menu);
         super.onCreateOptionsMenu(menu, inflater);
-
     }
 
     private void initview() {
         toolbar = (android.support.v7.widget.Toolbar)NewLayout.findViewById(R.id.toolbar);
         toolbar.inflateMenu(R.menu.toolbar);//标题
-
 //        toolbar.setOverflowIcon(getResources().getDrawable(R.drawable.sezhi_white));//设置溢出图标滴，变成自己想要的图标
 
         recyclerView = (RecyclerView)NewLayout.findViewById(R.id.collect_recyclerView);//找到对应的滚动控件
