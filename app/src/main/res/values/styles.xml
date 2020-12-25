@@ -23,7 +23,6 @@
     <!--解决toolbar多选菜单的在顶部位置-->
     <style name="ToolbarPopupTheme" parent="@style/ThemeOverlay.AppCompat.Dark">
         <!--<item name="android:colorBackground">@color/colorPrimaryDark</item> 这里可以改变菜单的背景色-->
-
         <item name="actionOverflowMenuStyle">@style/OverflowMenuStyle</item> <!--新增一个item，用于控制menu-->
     </style>
 

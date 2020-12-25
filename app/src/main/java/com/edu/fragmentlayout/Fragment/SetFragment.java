@@ -117,12 +117,12 @@ public class SetFragment extends android.support.v4.app.Fragment implements View
 
         fjbanner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE);
         fjbanner.setImageLoader(mImageLoader);
-        fjbanner.setBannerAnimation(Transformer.Default);
+        fjbanner.setBannerAnimation(Transformer.ZoomOutSlide);
         fjbanner.setBannerTitles(imagetitle);
         fjbanner.setImages(imagepath);
         fjbanner.setDelayTime(3000);
         fjbanner.isAutoPlay(true);
-        fjbanner.setIndicatorGravity(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE);
+        fjbanner.setIndicatorGravity(BannerConfig.CENTER);
         fjbanner.start();
         fjbanner.setOnBannerListener(new OnBannerListener() {
             @Override

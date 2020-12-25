@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:layout_marginBottom="60dp"
     tools:context=".Fragment.SetFragment">
 
@@ -18,7 +19,6 @@
                 android:layout_height="40dp"
                 android:background="@color/colorPrimaryDark"
                 app:logo="@drawable/fengjin"
-
                 app:navigationIcon="@drawable/caidan_white"
                 app:popupTheme="@style/ToolbarPopupTheme"
                 app:titleTextColor="@color/white">
@@ -46,20 +46,23 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-
-
             <LinearLayout
+                android:layout_marginTop="45dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <!--主菜单栏-->
+                <include layout="@layout/xuanlayout"/>
 
                 <com.youth.banner.Banner
                     android:id="@+id/fengjingbanner"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="5dp"
                     app:layout_scrollFlags="scroll">
                 </com.youth.banner.Banner>
+
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/pic_recycleview"
